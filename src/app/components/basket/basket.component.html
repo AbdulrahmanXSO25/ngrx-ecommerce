@@ -1,0 +1,9 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Basket</h1>
+  <div *ngFor="let product of basket$ | async" class="border p-4 mb-2">
+    <h2 class="text-xl font-bold">{{ product.name }}</h2>
+    <p class="font-bold">{{ product.price | currency }}</p>
+    <button class="bg-red-500 text-white p-2 mt-2" (click)="removeFromBasket(product.id)">Remove</button>
+  </div>
+  <button class="bg-red-500 text-white p-2 mt-4" (click)="clearBasket()">Clear Basket</button>
+</div>

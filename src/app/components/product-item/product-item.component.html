@@ -1,0 +1,6 @@
+<div class="border p-4">
+  <h2 class="text-xl font-bold">{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+  <p class="font-bold">{{ product.price | currency }}</p>
+  <button class="bg-blue-500 text-white p-2 mt-2" (click)="addToBasket()">Add to Basket</button>
+</div>
