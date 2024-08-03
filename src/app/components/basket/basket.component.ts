@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product } from '../../models/product.model';
-import { removeFromBasket, clearBasket } from '../../state/basket/basket.actions';
+import { BasketItem } from '../../models/basket-item.model';
+import { removeFromBasket, clearBasket, updateQuantity } from '../../state/basket/basket.actions';
 
 @Component({
   selector: 'app-basket',
@@ -10,9 +10,9 @@ import { removeFromBasket, clearBasket } from '../../state/basket/basket.actions
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  basket$: Observable<Product[]>;
+  basket$: Observable<BasketItem[]>;
 
-  constructor(private store: Store<{ basket: Product[] }>) {
+  constructor(private store: Store<{ basket: BasketItem[] }>) {
     this.basket$ = store.select('basket');
   }
 
@@ -24,5 +24,9 @@ export class BasketComponent implements OnInit {
 
   clearBasket() {
     this.store.dispatch(clearBasket());
+  }
+
+  updateQuantity(productId: number, quantity: number) {
+    this.store.dispatch(updateQuantity({ productId, quantity }));
   }
 }

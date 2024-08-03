@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../models/product.model';
 import { loadProducts, loadProductsSuccess } from './products.actions';
-import { mockProducts } from '../../data/mock-products';
 
 export const initialState: Product[] = [];
 
